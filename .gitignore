@@ -1,5 +1,7 @@
-/.vscode
+#/.vscode
 /pisend_src.lst
 /pisend_src.map
 /pisend_src.sld
 /pisend_src.sym
+/dot
+/src/pisend_src.map
