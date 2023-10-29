@@ -375,6 +375,7 @@ hard_clear_uart:
 			call    open_uart
 		;	LOG "CLEAR UART"
 			call    clear_uart
+            call delay2
 		;	LOG "SET BAUD"
 			ld      a,3 : ld bc,UART_TX_P_133B : out (c),a 
 			call    setbaud115200
@@ -507,6 +508,10 @@ timedout:
 			ret 
 delay:			
 			push    bc : push de : ld b,4			; we need a bit of a wait 
+.wtl		call    RasterWait : djnz .wtl : pop de : pop bc : ret 
+
+delay2:			
+			push    bc : push de : ld b,50			; we need a bit of a wait 
 .wtl		call    RasterWait : djnz .wtl : pop de : pop bc : ret 
 
 RasterWait:
