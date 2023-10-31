@@ -55,7 +55,10 @@ main:
         jp      finish
 
 process_args:
-        ld      sp, $fffe                   ; some space I found....
+        ;ld      sp, $fffe                      ; some space I found.... No need to change stack here. It still works if stack
+                                                ; is where BASIC had it at dot entry point, and is also more friendly to any
+                                                ; machine code which might have been put there if RAMTOP was moved down. Also
+                                                ; it plays nicer if we call pisend as a lib from other asm - SevenFFF 
 
         ld      hl, (command_line)               ; ensure hl is pointing to command_line
         ld      de, command_buffer 
